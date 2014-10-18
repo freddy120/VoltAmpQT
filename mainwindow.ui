@@ -522,7 +522,7 @@
       <property name="title">
        <string>Amplitude Ramp Parameters</string>
       </property>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -687,13 +687,13 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>220</x>
          <y>30</y>
          <width>101</width>
-         <height>231</height>
+         <height>239</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_3">
@@ -860,7 +860,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -1343,6 +1343,45 @@
       <string>Choose port for comunication:</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="pushButton_connect">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>10</y>
+       <width>71</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Connect</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_disconnect">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>10</y>
+       <width>71</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Disconnect</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_settings">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>50</y>
+       <width>51</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Settings</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
@@ -1585,7 +1624,7 @@
      </layout>
     </widget>
    </widget>
-   <widget class="QPushButton" name="pushButton_8">
+   <widget class="QPushButton" name="pushButton_viewlog">
     <property name="geometry">
      <rect>
       <x>730</x>
@@ -1609,7 +1648,7 @@
    <zorder>groupBox_7</zorder>
    <zorder>groupBox_8</zorder>
    <zorder>groupBox_9</zorder>
-   <zorder>pushButton_8</zorder>
+   <zorder>pushButton_viewlog</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

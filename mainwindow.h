@@ -21,9 +21,17 @@ public:
     void getallSerialPort();
     void connectSerialPort(const QSerialPortInfo &info);
 
+private slots:
+    void on_comboBoxSerial_currentIndexChanged(int index);
+
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     QSerialPortInfo pinfo;
     QSerialPort *serialPort;
 };
+
+
 #endif // MAINWINDOW_H
+
