@@ -9,44 +9,26 @@ ViewLog::ViewLog(QWidget *parent) :
     ui(new Ui::ViewLog)
 {
     ui->setupUi(this);
-    this->setFixedSize(this->width(),this->height());
-    ui->VoltLogplainTextEdit->setPlainText("Hello World");
+    this->setFixedSize(this->width(),this->height());  //no resize
+
+    QPalette p = palette();
+    p.setColor(QPalette::Base, Qt::black);
+    p.setColor(QPalette::Text, Qt::green);
+    setPalette(p);
+
+    //ui->VoltLogplainTextEdit->setPlainText("Hello World");
 }
 
 
 void ViewLog::putData(const QByteArray &data)
 {
-   ui->VoltLogplainTextEdit->setPlainText(QString(data));
-  // insertPlainText(QString(data));
-}
 
-void ViewLog::keyPressEvent(QKeyEvent *e)
-{
-    switch (e->key()) {
-    case Qt::Key_Backspace:
-    case Qt::Key_Left:
-    case Qt::Key_Right:
-    case Qt::Key_Up:
-    case Qt::Key_Down:
-        break;
-    default:
-        emit getData(e->text().toLocal8Bit());
-    }
-}
+    QString textlog;
+    //textlog = ui->VoltLogplainTextEdit->toPlainText();
+   // textlog = textlog + QString(data).trimmed();
+   //  ui->VoltLogplainTextEdit->clear();
 
-void ViewLog::mousePressEvent(QMouseEvent *e)
-{
-    Q_UNUSED(e)
-    setFocus();
+    ui->VoltLogplainTextEdit->textCursor().insertText(QString(data));
+    //ui->VoltLogplainTextEdit->setPlainText(QString(data).trimmed());
+    // insertPlainText(QString(data));
 }
-
-void ViewLog::mouseDoubleClickEvent(QMouseEvent *e)
-{
-    Q_UNUSED(e)
-}
-
-void  ViewLog::contextMenuEvent(QContextMenuEvent *e)
-{
-    Q_UNUSED(e)
-}
-

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>453</width>
-    <height>399</height>
+    <width>451</width>
+    <height>440</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,6 +21,13 @@
      <width>411</width>
      <height>351</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="readOnly">
     <bool>true</bool>
@@ -37,6 +44,32 @@
    </property>
    <property name="text">
     <string>Voltammetry log</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_savelog">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>400</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>save log file</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_clearlog">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>400</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>clear log</string>
    </property>
   </widget>
  </widget>

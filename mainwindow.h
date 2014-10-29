@@ -5,7 +5,10 @@
 #include <QMainWindow>
 #include "qcustomplot.h"
 #include <QtSerialPort>
+#include <QInputDialog>
 
+#include <fstream>
+#include "voltagrama.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -16,7 +19,6 @@ class MainWindow;
 QT_END_NAMESPACE
 
 
-
 class SettingsDialog;
 class ViewLog;
 
@@ -24,28 +26,70 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
+
+
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+
    void setupSimpleDemo(QCustomPlot *customPlot);
-   // void getallSerialPort();
-   // void connectSerialPort(const QSerialPortInfo &info);
+   void addplot(const QVector<double>& xVoltaje,const QVector<double>& yAmplitude);
+   void getDatafromSerial();
+   void getDatafromFile(std::string filename);
+
+   void setx_strippingVoltammetry(int scanmode);//stripping voltammetry
+   void setx_normalVoltammetry(int scanmode);// normalVoltammetry
+   void setx_cyclicVoltammetry(int scanmode);//cyclicVoltammetry
 
 private slots:
     void openSerialPort();
     void closeSerialPort();
+
     void writeData(const QByteArray &data);
     void readData();
+
     void handleError(QSerialPort::SerialPortError error);
+    void startProceso();
+
+    //configuration options
+    void setAllconfigurations();
+    void LoadFile();
+
+    void titleDoubleClick(QMouseEvent *event, QCPPlotTitle *title);
+    void axisLabelDoubleClick(QCPAxis* axis, QCPAxis::SelectablePart part);
+    void legendDoubleClick(QCPLegend* legend, QCPAbstractLegendItem* item);
+    void selectionChanged();
+    void mousePress();
+    void mouseWheel();
+    void removeSelectedGraph();
+    void removeAllGraphs();
+    void contextMenuRequest(QPoint pos);
+    void moveLegend();
+    void graphClicked(QCPAbstractPlottable *plottable);
+
 
 private:
+    int currentNumberVolt; // Numero actual de voltagramas!
+    Voltagrama::Voltamm voltamm_data;
+
+ // functions
+
     void initActionsConnections();
+    void getAllconfigurations();
 
-private:
+
+    // objects
+
+    std::ofstream fileoutput;
+    std::ifstream fileinput;
     Ui::MainWindow *ui;
     SettingsDialog *settings;
     ViewLog *logfile;
     QSerialPort *serialPort;
+    QString portName;
+
+    std::vector<Voltagrama> voltagramas;// array of voltagramas
 };
 #endif // MAINWINDOW_H
 

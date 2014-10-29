@@ -194,5 +194,4 @@ void SettingsDialog::updateSettings()
                 ui->flowControlBox->itemData(ui->flowControlBox->currentIndex()).toInt());
     currentSettings.stringFlowControl = ui->flowControlBox->currentText();
 
-    currentSettings.localEchoEnabled = ui->localEchoCheckBox->isChecked();
 }

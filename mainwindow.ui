@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1109</width>
-    <height>654</height>
+    <width>1207</width>
+    <height>688</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,13 +24,13 @@
    </size>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="pushButton_startproceso">
     <property name="geometry">
      <rect>
-      <x>970</x>
-      <y>520</y>
+      <x>1110</x>
+      <y>560</y>
       <width>81</width>
-      <height>31</height>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
@@ -46,17 +46,17 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>30</y>
-      <width>691</width>
-      <height>471</height>
+      <y>10</y>
+      <width>801</width>
+      <height>531</height>
      </rect>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>730</x>
-      <y>0</y>
+      <x>830</x>
+      <y>-10</y>
       <width>371</width>
       <height>51</height>
      </rect>
@@ -494,9 +494,9 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>730</x>
-      <y>150</y>
-      <width>361</width>
+      <x>840</x>
+      <y>180</y>
+      <width>341</width>
       <height>361</height>
      </rect>
     </property>
@@ -515,7 +515,7 @@
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>331</width>
+        <width>311</width>
         <height>281</height>
        </rect>
       </property>
@@ -525,7 +525,7 @@
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>10</x>
+         <x>60</x>
          <y>30</y>
          <width>201</width>
          <height>231</height>
@@ -539,7 +539,7 @@
          <number>8</number>
         </property>
         <item row="0" column="1">
-         <widget class="QLineEdit" name="lineEdit_2">
+         <widget class="QLineEdit" name="lineEdit_vdiff">
           <property name="text">
            <string>8</string>
           </property>
@@ -560,7 +560,7 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QLineEdit" name="lineEdit_5">
+         <widget class="QLineEdit" name="lineEdit_vmmm">
           <property name="text">
            <string>25</string>
           </property>
@@ -581,7 +581,7 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QLineEdit" name="lineEdit_6">
+         <widget class="QLineEdit" name="lineEdit_voffset">
           <property name="text">
            <string>200</string>
           </property>
@@ -602,7 +602,7 @@
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QLineEdit" name="lineEdit_11">
+         <widget class="QLineEdit" name="lineEdit_vminp">
           <property name="text">
            <string>-1200</string>
           </property>
@@ -623,7 +623,7 @@
          </widget>
         </item>
         <item row="4" column="1">
-         <widget class="QLineEdit" name="lineEdit_12">
+         <widget class="QLineEdit" name="lineEdit_vmaxp">
           <property name="text">
            <string>1200</string>
           </property>
@@ -644,7 +644,7 @@
          </widget>
         </item>
         <item row="5" column="1">
-         <widget class="QLineEdit" name="lineEdit_13">
+         <widget class="QLineEdit" name="lineEdit_vclean">
           <property name="text">
            <string>202</string>
           </property>
@@ -665,7 +665,7 @@
          </widget>
         </item>
         <item row="6" column="1">
-         <widget class="QLineEdit" name="lineEdit_14">
+         <widget class="QLineEdit" name="lineEdit_vrest">
           <property name="text">
            <string>202</string>
           </property>
@@ -687,103 +687,18 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>220</x>
-         <y>30</y>
-         <width>101</width>
-         <height>239</height>
-        </rect>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_3">
-        <property name="verticalSpacing">
-         <number>8</number>
-        </property>
-        <item row="0" column="0">
-         <widget class="QSlider" name="horizontalSlider_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="tickPosition">
-           <enum>QSlider::TicksBelow</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QSlider" name="horizontalSlider_3">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="tickPosition">
-           <enum>QSlider::TicksBelow</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QSlider" name="horizontalSlider_4">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="tickPosition">
-           <enum>QSlider::TicksBelow</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="QSlider" name="horizontalSlider_5">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="tickPosition">
-           <enum>QSlider::TicksBelow</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="0">
-         <widget class="QSlider" name="horizontalSlider_6">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="tickPosition">
-           <enum>QSlider::TicksBelow</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="0">
-         <widget class="QSlider" name="horizontalSlider_7">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="tickPosition">
-           <enum>QSlider::TicksBelow</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="0">
-         <widget class="QSlider" name="horizontalSlider_8">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="tickPosition">
-           <enum>QSlider::TicksBelow</enum>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
      </widget>
-     <widget class="QPushButton" name="pushButton_4">
+     <widget class="QPushButton" name="pushButton_scAmplitude">
       <property name="geometry">
        <rect>
-        <x>270</x>
+        <x>10</x>
         <y>300</y>
-        <width>75</width>
-        <height>23</height>
+        <width>101</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
-       <string>Save</string>
+       <string>Set configuration</string>
       </property>
      </widget>
     </widget>
@@ -796,74 +711,17 @@
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>331</width>
+        <width>311</width>
         <height>281</height>
        </rect>
       </property>
       <property name="title">
        <string>Time Ramp Parameters</string>
       </property>
-      <widget class="QWidget" name="layoutWidget_2">
-       <property name="geometry">
-        <rect>
-         <x>220</x>
-         <y>20</y>
-         <width>101</width>
-         <height>241</height>
-        </rect>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_4">
-        <property name="verticalSpacing">
-         <number>10</number>
-        </property>
-        <item row="3" column="0">
-         <widget class="QSlider" name="horizontalSlider_12">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QSlider" name="horizontalSlider_11">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QSlider" name="horizontalSlider_10">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QSlider" name="horizontalSlider_9">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="0">
-         <widget class="QSlider" name="horizontalSlider_14">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="0">
-         <widget class="QSlider" name="horizontalSlider_13">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>10</x>
+         <x>50</x>
          <y>21</y>
          <width>201</width>
          <height>241</height>
@@ -881,7 +739,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLineEdit" name="lineEdit_3">
+         <widget class="QLineEdit" name="lineEdit_inittosample">
           <property name="text">
            <string>18</string>
           </property>
@@ -902,7 +760,7 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QLineEdit" name="lineEdit_7">
+         <widget class="QLineEdit" name="lineEdit_sampletoend">
           <property name="text">
            <string>1</string>
           </property>
@@ -923,7 +781,7 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QLineEdit" name="lineEdit_8">
+         <widget class="QLineEdit" name="lineEdit_electrodep">
           <property name="text">
            <string>90</string>
           </property>
@@ -944,7 +802,7 @@
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QLineEdit" name="lineEdit_15">
+         <widget class="QLineEdit" name="lineEdit_waittostart">
           <property name="text">
            <string>5000</string>
           </property>
@@ -965,7 +823,7 @@
          </widget>
         </item>
         <item row="4" column="1">
-         <widget class="QLineEdit" name="lineEdit_16">
+         <widget class="QLineEdit" name="lineEdit_tclean">
           <property name="text">
            <string>30</string>
           </property>
@@ -986,7 +844,7 @@
          </widget>
         </item>
         <item row="5" column="1">
-         <widget class="QLineEdit" name="lineEdit_17">
+         <widget class="QLineEdit" name="lineEdit_ncycles">
           <property name="text">
            <string>1</string>
           </property>
@@ -1002,17 +860,17 @@
        </layout>
       </widget>
      </widget>
-     <widget class="QPushButton" name="pushButton_9">
+     <widget class="QPushButton" name="pushButton_scTime">
       <property name="geometry">
        <rect>
-        <x>270</x>
+        <x>10</x>
         <y>300</y>
-        <width>75</width>
-        <height>23</height>
+        <width>101</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
-       <string>Save</string>
+       <string>Set configuration</string>
       </property>
      </widget>
     </widget>
@@ -1032,7 +890,7 @@
       <property name="title">
        <string>Technique</string>
       </property>
-      <widget class="QRadioButton" name="radioButton_3">
+      <widget class="QRadioButton" name="radioButton_cyclicvolt">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -1045,7 +903,7 @@
         <string>cyclicVoltammetry</string>
        </property>
       </widget>
-      <widget class="QRadioButton" name="radioButton_4">
+      <widget class="QRadioButton" name="radioButton_normalvolt">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -1058,7 +916,7 @@
         <string>normalVoltammetry</string>
        </property>
       </widget>
-      <widget class="QRadioButton" name="radioButton_5">
+      <widget class="QRadioButton" name="radioButton_strippingvolt">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -1087,7 +945,7 @@
       <property name="title">
        <string>Clean</string>
       </property>
-      <widget class="QCheckBox" name="checkBox_2">
+      <widget class="QCheckBox" name="checkBox_cleanbefore">
        <property name="geometry">
         <rect>
          <x>20</x>
@@ -1103,7 +961,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QCheckBox" name="checkBox_3">
+      <widget class="QCheckBox" name="checkBox_cleanafter">
        <property name="geometry">
         <rect>
          <x>20</x>
@@ -1116,7 +974,7 @@
         <string>Clean After</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_10">
+      <widget class="QPushButton" name="pushButton_cleannow">
        <property name="geometry">
         <rect>
          <x>70</x>
@@ -1142,7 +1000,7 @@
       <property name="title">
        <string>Mode</string>
       </property>
-      <widget class="QRadioButton" name="radioButton_6">
+      <widget class="QRadioButton" name="radioButton_squarewave">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -1158,7 +1016,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QRadioButton" name="radioButton_7">
+      <widget class="QRadioButton" name="radioButton_pulse">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -1171,7 +1029,7 @@
         <string>Pulse</string>
        </property>
       </widget>
-      <widget class="QRadioButton" name="radioButton_8">
+      <widget class="QRadioButton" name="radioButton_staircase">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -1184,7 +1042,7 @@
         <string>Staircase</string>
        </property>
       </widget>
-      <widget class="QCheckBox" name="checkBox">
+      <widget class="QCheckBox" name="checkBox_analyticalmode">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -1253,7 +1111,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_18">
+         <widget class="QLineEdit" name="lineEdit_gain">
           <property name="text">
            <string>2</string>
           </property>
@@ -1275,17 +1133,17 @@
        </property>
       </widget>
      </widget>
-     <widget class="QPushButton" name="pushButton_12">
+     <widget class="QPushButton" name="pushButton_scTechnique">
       <property name="geometry">
        <rect>
-        <x>260</x>
-        <y>290</y>
-        <width>75</width>
-        <height>23</height>
+        <x>10</x>
+        <y>300</y>
+        <width>101</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
-       <string>Save</string>
+       <string>Set configuration</string>
       </property>
      </widget>
     </widget>
@@ -1293,10 +1151,10 @@
    <widget class="QGroupBox" name="groupBox_5">
     <property name="geometry">
      <rect>
-      <x>730</x>
-      <y>60</y>
+      <x>830</x>
+      <y>70</y>
       <width>361</width>
-      <height>81</height>
+      <height>101</height>
      </rect>
     </property>
     <property name="title">
@@ -1306,23 +1164,21 @@
      <property name="geometry">
       <rect>
        <x>40</x>
-       <y>50</y>
+       <y>40</y>
        <width>251</width>
-       <height>22</height>
+       <height>25</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QComboBox" name="comboBoxSerial">
-        <item>
-         <property name="text">
-          <string>Port</string>
-         </property>
-        </item>
+       <widget class="QPushButton" name="pushButton_connect">
+        <property name="text">
+         <string>Connect</string>
+        </property>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit">
+       <widget class="QLineEdit" name="lineEdit_com">
         <property name="enabled">
          <bool>false</bool>
         </property>
@@ -1343,37 +1199,11 @@
       <string>Choose port for comunication:</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_connect">
-     <property name="geometry">
-      <rect>
-       <x>200</x>
-       <y>10</y>
-       <width>71</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Connect</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_disconnect">
-     <property name="geometry">
-      <rect>
-       <x>280</x>
-       <y>10</y>
-       <width>71</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Disconnect</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="pushButton_settings">
      <property name="geometry">
       <rect>
        <x>300</x>
-       <y>50</y>
+       <y>40</y>
        <width>51</width>
        <height>23</height>
       </rect>
@@ -1382,25 +1212,25 @@
       <string>Settings</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="pushButton_disconnect">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>70</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Disconnect</string>
+     </property>
+    </widget>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QPushButton" name="pushButton_setD">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>0</y>
-      <width>361</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Autor: Freddy Rodrigo Mendoza Ticona       email:freddy12120@gmail.com</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>730</x>
-      <y>520</y>
+      <x>830</x>
+      <y>550</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -1413,19 +1243,19 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>510</y>
+      <y>560</y>
       <width>201</width>
-      <height>91</height>
+      <height>71</height>
      </rect>
     </property>
     <property name="title">
      <string>View mode</string>
     </property>
-    <widget class="QRadioButton" name="radioButton_2">
+    <widget class="QRadioButton" name="radioButton_bothsignals">
      <property name="geometry">
       <rect>
        <x>110</x>
-       <y>30</y>
+       <y>20</y>
        <width>82</width>
        <height>17</height>
       </rect>
@@ -1434,11 +1264,11 @@
       <string>Both Signals</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="radioButton">
+    <widget class="QRadioButton" name="radioButton_diff">
      <property name="geometry">
       <rect>
        <x>110</x>
-       <y>60</y>
+       <y>50</y>
        <width>82</width>
        <height>17</height>
       </rect>
@@ -1447,11 +1277,11 @@
       <string>Differential</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_5">
+    <widget class="QPushButton" name="pushButton_viewplot">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>40</y>
+       <y>30</y>
        <width>75</width>
        <height>23</height>
       </rect>
@@ -1465,9 +1295,9 @@
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>510</y>
+      <y>560</y>
       <width>141</width>
-      <height>91</height>
+      <height>71</height>
      </rect>
     </property>
     <property name="title">
@@ -1477,7 +1307,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>20</y>
+       <y>10</y>
        <width>121</width>
        <height>58</height>
       </rect>
@@ -1493,7 +1323,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLCDNumber" name="lcdNumber"/>
+         <widget class="QLCDNumber" name="lcdNumber_amp"/>
         </item>
        </layout>
       </item>
@@ -1507,7 +1337,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLCDNumber" name="lcdNumber_2"/>
+         <widget class="QLCDNumber" name="lcdNumber_volt"/>
         </item>
        </layout>
       </item>
@@ -1518,20 +1348,20 @@
     <property name="geometry">
      <rect>
       <x>370</x>
-      <y>510</y>
-      <width>201</width>
-      <height>91</height>
+      <y>560</y>
+      <width>311</width>
+      <height>71</height>
      </rect>
     </property>
     <property name="title">
      <string>File save/load</string>
     </property>
-    <widget class="QPushButton" name="pushButton_6">
+    <widget class="QPushButton" name="pushButton_savefile">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>60</y>
-       <width>75</width>
+       <x>220</x>
+       <y>10</y>
+       <width>71</width>
        <height>23</height>
       </rect>
      </property>
@@ -1539,11 +1369,11 @@
       <string>Save File</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_2">
+    <widget class="QPushButton" name="pushButton_addplot">
      <property name="geometry">
       <rect>
-       <x>120</x>
-       <y>60</y>
+       <x>220</x>
+       <y>40</y>
        <width>71</width>
        <height>23</height>
       </rect>
@@ -1556,21 +1386,21 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>30</y>
+       <y>20</y>
        <width>181</width>
        <height>25</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_11">
       <item>
-       <widget class="QPushButton" name="pushButton_7">
+       <widget class="QPushButton" name="pushButton_loadfile">
         <property name="text">
          <string>Load File</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_10">
+       <widget class="QLineEdit" name="lineEdit_loadfile">
         <property name="enabled">
          <bool>false</bool>
         </property>
@@ -1579,16 +1409,16 @@
      </layout>
     </widget>
     <zorder>layoutWidget</zorder>
-    <zorder>pushButton_6</zorder>
-    <zorder>pushButton_2</zorder>
+    <zorder>pushButton_savefile</zorder>
+    <zorder>pushButton_addplot</zorder>
    </widget>
    <widget class="QGroupBox" name="groupBox_9">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>510</y>
+      <x>690</x>
+      <y>560</y>
       <width>121</width>
-      <height>91</height>
+      <height>71</height>
      </rect>
     </property>
     <property name="title">
@@ -1612,7 +1442,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_9">
+       <widget class="QLineEdit" name="lineEdit_nvoltagra">
         <property name="enabled">
          <bool>false</bool>
         </property>
@@ -1627,8 +1457,8 @@
    <widget class="QPushButton" name="pushButton_viewlog">
     <property name="geometry">
      <rect>
-      <x>730</x>
-      <y>550</y>
+      <x>830</x>
+      <y>580</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -1637,25 +1467,66 @@
      <string>View Log</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_saveconf">
+    <property name="geometry">
+     <rect>
+      <x>910</x>
+      <y>550</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Save config</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_loadconf">
+    <property name="geometry">
+     <rect>
+      <x>910</x>
+      <y>580</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Load Config</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>40</y>
+      <width>371</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Autor: Freddy Rodrigo Mendoza Ticona       email:freddy12120@gmail.com</string>
+    </property>
+   </widget>
+   <zorder>groupBox_5</zorder>
    <zorder>groupBox_6</zorder>
-   <zorder>pushButton</zorder>
+   <zorder>pushButton_startproceso</zorder>
    <zorder>customPlot</zorder>
    <zorder>label_3</zorder>
    <zorder>tabWidget</zorder>
-   <zorder>groupBox_5</zorder>
-   <zorder>label</zorder>
-   <zorder>pushButton_3</zorder>
+   <zorder>pushButton_setD</zorder>
    <zorder>groupBox_7</zorder>
    <zorder>groupBox_8</zorder>
    <zorder>groupBox_9</zorder>
    <zorder>pushButton_viewlog</zorder>
+   <zorder>pushButton_saveconf</zorder>
+   <zorder>pushButton_loadconf</zorder>
+   <zorder>label</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1109</width>
+     <width>1207</width>
      <height>21</height>
     </rect>
    </property>
