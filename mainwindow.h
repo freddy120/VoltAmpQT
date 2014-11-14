@@ -27,22 +27,30 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 
-
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-
+   //!------Plot-------!
    void setupSimpleDemo(QCustomPlot *customPlot);
-   void addplot(const QVector<double>& xVoltaje,const QVector<double>& yAmplitude);
+   void addplot(const QVector<double>& xVoltaje,const QVector<double>& yAmplitudep, const QVector<double>& yAmplituden);
+   void addplotD(const QVector<double>& xVoltaje,const QVector<double>& yAmplitude);
+
+
+
    void getDatafromSerial();
    void getDatafromFile(std::string filename);
 
+
+
+   //!------Calculate x values for technique-------!
    void setx_strippingVoltammetry(int scanmode);//stripping voltammetry
-   void setx_normalVoltammetry(int scanmode);// normalVoltammetry
-   void setx_cyclicVoltammetry(int scanmode);//cyclicVoltammetry
+   void setx_normalVoltammetry (int scanmode);// normalVoltammetry
+   void setx_cyclicVoltammetry (int scanmode);//cyclicVoltammetry
 
 private slots:
+
+   //!------Serial communication-------!
     void openSerialPort();
     void closeSerialPort();
 
@@ -50,11 +58,17 @@ private slots:
     void readData();
 
     void handleError(QSerialPort::SerialPortError error);
+
+    //!------Init Process-------!
     void startProceso();
 
-    //configuration options
+
     void setAllconfigurations();
     void LoadFile();
+
+    void showBothSignals();
+    void showDifferential();
+
 
     void titleDoubleClick(QMouseEvent *event, QCPPlotTitle *title);
     void axisLabelDoubleClick(QCPAxis* axis, QCPAxis::SelectablePart part);

@@ -8,7 +8,6 @@
 #include <QtSerialPort>
 
 #include <QFileDialog>
-
 #include "util.h"
 
 #include <cstdlib>
@@ -28,8 +27,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     setupSimpleDemo(ui->customPlot);// Aca es!
 
-   // this->setFixedSize(this->width(),this->height());
-
 
     currentNumberVolt = 0;
 
@@ -43,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->pushButton_connect->setEnabled(true);
     ui->pushButton_disconnect->setEnabled(false);
     ui->pushButton_settings->setEnabled(true);
-   // ui->pushButton_viewlog->setEnabled(false);
+   //ui->pushButton_viewlog->setEnabled(false);
 
     initActionsConnections();
 
@@ -196,6 +193,11 @@ void MainWindow::initActionsConnections()
    //  connect(ui->actionAboutQt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
 
     connect(ui->pushButton_loadfile,SIGNAL(clicked()),this, SLOT(LoadFile()));
+
+    connect(ui->radioButton_bothsignals,SIGNAL(toggled(bool)),this,SLOT(showBothSignals()));
+    connect(ui->radioButton_diff,SIGNAL(toggled(bool)),this,SLOT(showDifferential()));
+
+
 }
 
 
@@ -428,71 +430,59 @@ void MainWindow::graphClicked(QCPAbstractPlottable *plottable)
 }
 
 
-void MainWindow:: addplot(const QVector<double>& xVoltaje,const QVector<double>& yAmplitude){
-
-    currentNumberVolt++; // cuantos voltagramas exiten hasta el momento.
-
-
+void MainWindow:: addplot(const QVector<double>& xVoltaje,const QVector<double>& yAmplitudep, const QVector<double>& yAmplituden){
 
 
     ui->customPlot->addGraph();
-    QCPScatterStyle::ScatterShape shapes (QCPScatterStyle::ssCross);
+    QCPScatterStyle::ScatterShape shapes (QCPScatterStyle::ssCrossCircle);
 
 
     ui->customPlot->graph()->setName(QString("New graph %1").arg(ui->customPlot->graphCount()-1));
-    ui->customPlot->graph()->setData(xVoltaje, yAmplitude);
+    ui->customPlot->graph()->setData(xVoltaje, yAmplitudep);
     ui->customPlot->graph()->setLineStyle(QCPGraph::lsLine);
-
-    //ui->customPlot->graph()->setLineStyle((QCPGraph::LineStyle)(rand()%5+1));
-
-    //if (rand()%100 > 75)
-    //  ui->customPlot->graph()->setScatterStyle(QCPScatterStyle((QCPScatterStyle::ScatterShape)(rand()%9+1)));
-
-    ui->customPlot->graph()->setScatterStyle(QCPScatterStyle(shapes, 3));
+    ui->customPlot->graph()->setScatterStyle(QCPScatterStyle(shapes, 4));
 
     QPen graphPen;
     graphPen.setColor(QColor(rand()%245+10, rand()%245+10, rand()%245+10));
     graphPen.setWidthF(rand()/(double)RAND_MAX*2+1);
 
     ui->customPlot->graph()->setPen(graphPen);
-
-
-
     ui->customPlot->graph()->rescaleAxes(true);
-
-
     ui->customPlot->replot();
 
 
+    ui->customPlot->addGraph();
+    ui->customPlot->graph()->setName(QString("New graph %1").arg(ui->customPlot->graphCount()-1));
+    ui->customPlot->graph()->setData(xVoltaje, yAmplituden);
+    ui->customPlot->graph()->setLineStyle(QCPGraph::lsLine);
+    ui->customPlot->graph()->setScatterStyle(QCPScatterStyle(shapes, 3));
+    ui->customPlot->graph()->setPen(graphPen);
+    ui->customPlot->graph()->rescaleAxes(true);
+    ui->customPlot->replot();
+
+
+}
+
+void MainWindow::addplotD(const QVector<double>& xVoltaje,const QVector<double>& yAmplitude){
 
 
 
-//    ui->customPlot->legend->setVisible(true);
-//    ui->customPlot->legend->setFont(QFont("Helvetica", 9));
-//    ui->customPlot->legend->setRowSpacing(-3);
-//    QCPScatterStyle::ScatterShape shapes (QCPScatterStyle::ssCross);
-
-//    ui->customPlot->addGraph();
-
-//    ui->customPlot->graph()->setPen(QPen(Qt::red)); // line color red for second graph
-
-//    ui->customPlot->graph()->setData(xVoltaje,yAmplitude);
-
-//    ui->customPlot->graph()->rescaleAxes(true);
+    ui->customPlot->addGraph();
+    QCPScatterStyle::ScatterShape shapes (QCPScatterStyle::ssCrossCircle);
 
 
-//    ui->customPlot->graph()->setName(QCPScatterStyle::staticMetaObject.enumerator(QCPScatterStyle::staticMetaObject.indexOfEnumerator("ScatterShape")).valueToKey(shapes));
-//    ui->customPlot->graph()->setLineStyle(QCPGraph::lsLine);
+    ui->customPlot->graph()->setName(QString("New graph %1").arg(ui->customPlot->graphCount()-1));
+    ui->customPlot->graph()->setData(xVoltaje, yAmplitude);
+    ui->customPlot->graph()->setLineStyle(QCPGraph::lsLine);
+    ui->customPlot->graph()->setScatterStyle(QCPScatterStyle(shapes, 4));
 
+    QPen graphPen;
+    graphPen.setColor(QColor(rand()%245+10, rand()%245+10, rand()%245+10));
+    graphPen.setWidthF(rand()/(double)RAND_MAX*2+1);
 
-//    ui->customPlot->graph()->setScatterStyle(QCPScatterStyle(shapes, 10));
-
-
-//    ui->customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
-//
-
-    qDebug() << xVoltaje.at(0);
-
+    ui->customPlot->graph()->setPen(graphPen);
+    ui->customPlot->graph()->rescaleAxes(true);
+    ui->customPlot->replot();
 
 }
 
@@ -506,6 +496,7 @@ void MainWindow::getDatafromFile(std::string filename){
         // mensage box
     }
 
+    voltamm_data.Npoints=0; // init again
 
     std::string line;
 
@@ -525,16 +516,16 @@ void MainWindow::getDatafromFile(std::string filename){
 
                 if (toLowerCase(tokens[0]) == "@param")
                 {
-                    voltamm_data.t_ElectroDep   = (int)std::stod(tokens[1]);
-                    voltamm_data.vmmm           = (int)std::stod(tokens[2]);
-                    voltamm_data.t_InitToSample = (int)std::stod(tokens[3]);
-                    voltamm_data.t_SampleToEnd  = (int)std::stod(tokens[4]);
-                    voltamm_data.vdiff      = (int)std::stod(tokens[5]);
-                    voltamm_data.vminp      = (int)std::stod(tokens[6]);
-                    voltamm_data.vmaxp      = (int)std::stod(tokens[7]);
-                    voltamm_data.vrest      = (int)std::stod(tokens[8]);
-                    voltamm_data.voffset    = (int)std::stod(tokens[9]);
-                    voltamm_data.gain       = (int)std::stod(tokens[10]);
+                    voltamm_data.t_ElectroDep           = (int)std::stod(tokens[1]);
+                    voltamm_data.vmmm                   = (int)std::stod(tokens[2]);
+                    voltamm_data.t_InitToSample      = (int)std::stod(tokens[3]);
+                    voltamm_data.t_SampleToEnd      = (int)std::stod(tokens[4]);
+                    voltamm_data.vdiff          = (int)std::stod(tokens[5]);
+                    voltamm_data.vminp          = (int)std::stod(tokens[6]);
+                    voltamm_data.vmaxp       = (int)std::stod(tokens[7]);
+                    voltamm_data.vrest          = (int)std::stod(tokens[8]);
+                    voltamm_data.voffset     = (int)std::stod(tokens[9]);
+                    voltamm_data.gain           = (int)std::stod(tokens[10]);
                     voltamm_data.t_WaitToStart = (int)std::stod(tokens[11]);
                     voltamm_data.t_clean       = (int)std::stod(tokens[12]);
                     voltamm_data.vclean        = (int)std::stod(tokens[13]);
@@ -550,6 +541,7 @@ void MainWindow::getDatafromFile(std::string filename){
 
                 std::vector<std::string> tokens = tokenize(line,' ');
                 voltamm_data.yAmplitudeP.push_back(std::stod(tokens[1]));
+                voltamm_data.Npoints++;
 
             }
             else if (line[0] == 'N'){
@@ -561,15 +553,11 @@ void MainWindow::getDatafromFile(std::string filename){
 
         }
 
+           for(int i = 0; i <voltamm_data.Npoints ; i++){
 
+               voltamm_data.yAmplitudeD.push_back(voltamm_data.yAmplitudeN.at(i)-voltamm_data.yAmplitudeP.at(i));
+           }
 
-        qDebug() << voltamm_data.yAmplitudeP.at(265);
-
-        qDebug() << voltamm_data.yAmplitudeP.at(0);
-
-
-
-        qDebug() << voltamm_data.technique ;
 
     // some features
 
@@ -597,7 +585,6 @@ void MainWindow::getDatafromFile(std::string filename){
 // set eje X
 void MainWindow::setx_strippingVoltammetry(int scanmode){
 
-    if (scanmode == 5) { // square wave
 
         if(voltamm_data.vmaxp > voltamm_data.vminp){
                 int voltaje;
@@ -614,34 +601,94 @@ void MainWindow::setx_strippingVoltammetry(int scanmode){
 
         }else if(voltamm_data.vmaxp < voltamm_data.vminp){
 
+                int voltaje;
+                int vtop = voltamm_data.vmaxp - voltamm_data.vmmm;
+                vtop = abs(vtop);
+                voltaje=voltamm_data.vminp;
+
+                voltamm_data.Npoints = 0;
+                while(voltaje >= vtop){
+                    voltamm_data.xVoltaje.push_back(voltaje-2048);
+                    voltaje-=voltamm_data.vdiff;
+                    voltamm_data.Npoints++;
+                }
+
 
         }
-
-        qDebug() <<  voltamm_data.Npoints;
-    }
-    else if (scanmode == 6){ // pulse
-
-
-    }
-    else if (scanmode == 7){ // stair case
-
-
-    }
 
 }
 
 void MainWindow::setx_normalVoltammetry(int scanmode){
 
 
+    if(voltamm_data.vmaxp > voltamm_data.vminp){
+            int voltaje;
+            int vtop = voltamm_data.vmaxp + voltamm_data.vmmm;
+            vtop = abs(vtop);
+            voltaje=voltamm_data.vminp;
+
+            voltamm_data.Npoints = 0;
+            while(voltaje <= vtop){
+                voltamm_data.xVoltaje.push_back(voltaje-2048);
+                voltaje+=voltamm_data.vdiff;
+                voltamm_data.Npoints++;
+            }
+
+    }else if(voltamm_data.vmaxp < voltamm_data.vminp){
+
+            int voltaje;
+            int vtop = voltamm_data.vmaxp - voltamm_data.vmmm;
+            vtop = abs(vtop);
+            voltaje=voltamm_data.vminp;
+
+            voltamm_data.Npoints = 0;
+            while(voltaje >= vtop){
+                voltamm_data.xVoltaje.push_back(voltaje-2048);
+                voltaje-=voltamm_data.vdiff;
+                voltamm_data.Npoints++;
+            }
+
+
+    }
+
+
 }
 void MainWindow::setx_cyclicVoltammetry(int scanmode){
 
+    if(voltamm_data.vmaxp > voltamm_data.vminp){
+            int voltaje;
+            int vtop = voltamm_data.vmaxp + voltamm_data.vmmm;
+            vtop = abs(vtop);
+            voltaje=voltamm_data.vminp;
+
+            voltamm_data.Npoints = 0;
+            while(voltaje <= vtop){
+                voltamm_data.xVoltaje.push_back(voltaje-2048);
+                voltaje+=voltamm_data.vdiff;
+                voltamm_data.Npoints++;
+            }
+
+    }else if(voltamm_data.vmaxp < voltamm_data.vminp){
+
+            int voltaje;
+            int vtop = voltamm_data.vmaxp - voltamm_data.vmmm;
+            vtop = abs(vtop);
+            voltaje=voltamm_data.vminp;
+
+            voltamm_data.Npoints = 0;
+            while(voltaje >= vtop){
+                voltamm_data.xVoltaje.push_back(voltaje-2048);
+                voltaje-=voltamm_data.vdiff;
+                voltamm_data.Npoints++;
+            }
+
+
+    }
 
 }
 
 
 void MainWindow::LoadFile(){
-
 
     QString fileName = QFileDialog::getOpenFileName(this,tr("Open File"), QDir::currentPath());
 
@@ -654,15 +701,67 @@ void MainWindow::LoadFile(){
 
         //configurado el voltagrama,
         Voltagrama voltadd(voltamm_data);
-        qDebug() << voltadd.currentvoltamp.xVoltaje.at(0);
-        qDebug() << voltadd.currentvoltamp.xVoltaje.at(265);
 
 
-       voltagramas.push_back(voltadd);
+        voltagramas.push_back(voltadd);
+        currentNumberVolt++; // cuantos voltagramas exiten hasta el momento.
 
-       qDebug() << voltadd.currentvoltamp.xVoltaje.at(0);
-       addplot(voltadd.currentvoltamp.xVoltaje, voltadd.currentvoltamp.yAmplitudeP);
+      //addplot(voltadd.currentvoltamp.xVoltaje, voltadd.currentvoltamp.yAmplitudeP,voltadd.currentvoltamp.yAmplitudeN);
+
+       // addplotD(voltadd.currentvoltamp.xVoltaje,voltadd.currentvoltamp.yAmplitudeD);
+
+       qDebug() << currentNumberVolt;
+        Voltagrama voltaaux = voltagramas.at(currentNumberVolt-1);
+
+
+        addplotD(voltaaux.currentvoltamp.xVoltaje,voltaaux.currentvoltamp.yAmplitudeD);
+
+
     }
+}
+
+
+void MainWindow::showBothSignals(){
+
+
+    if(ui->radioButton_bothsignals->isChecked()){
+
+         removeAllGraphs();
+         for(int i=0;i<currentNumberVolt;i++){
+
+
+
+             Voltagrama voltaaux = voltagramas.at(i);
+             addplot(voltaaux.currentvoltamp.xVoltaje,voltaaux.currentvoltamp.yAmplitudeP,voltaaux.currentvoltamp.yAmplitudeN);
+
+
+         }
+
+    }
+
+}
+
+
+void MainWindow::showDifferential(){
+
+
+
+    if(ui->radioButton_diff->isChecked()){
+
+
+         removeAllGraphs();
+         for(int i=0;i<currentNumberVolt;i++){
+
+
+
+             Voltagrama voltaaux = voltagramas.at(i);
+             addplotD(voltaaux.currentvoltamp.xVoltaje,voltaaux.currentvoltamp.yAmplitudeD);
+
+
+         }
+
+    }
+
 
 }
 

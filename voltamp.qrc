@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/Images">
+        <file>logo.jpg</file>
+        <file>logoVolt.png</file>
+        <file>Icon.bmp</file>
+    </qresource>
+</RCC>
